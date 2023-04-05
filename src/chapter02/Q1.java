@@ -1,6 +1,7 @@
 package chapter02;
 
 import java.util.ArrayList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class Q1 {
