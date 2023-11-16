@@ -8,7 +8,7 @@ public class T2 {
     }
 
     public int solution(int p, int m, int d) {
-        int rate = 1;
+        int rate = 0;
         while(true){
             int amount = p;
             for(int i = 0; i < m; i++){
@@ -25,7 +25,7 @@ public class T2 {
 
     public int solution2(int p, int m, int d) {
         int low = 0;
-        int high = 20;
+        int high = 100;
 
         while(low < high){
             int mid = (low + high) /2;
