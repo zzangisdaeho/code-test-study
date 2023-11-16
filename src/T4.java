@@ -44,24 +44,26 @@ public class T4 {
         //4 출생 월에 따른 일 체크
         switch (month){
             case 1, 3, 5, 7, 8, 10, 12 -> {
-                if(day < 0 || day > 31) return false;
+                if(day < 1 || day > 31) return false;
             }
             case 4, 6, 9, 11 -> {
-                if(day < 0 || day > 30) return false;
+                if(day < 1 || day > 30) return false;
+            }
+
+            case 2 -> {
+                //5 윤년 체크
+                boolean leapYear = false;
+                if(year % 400 == 0) leapYear = true;
+                else if(year % 4 == 0 && year % 100 != 0) leapYear = true;
+
+                if(leapYear){
+                    if(day < 1 || day > 29) return false;
+                }else{
+                    if(day < 1 || day > 28) return false;
+                }
             }
         }
 
-        //5 윤년 체크
-        boolean leapYear = false;
-        if(year % 400 == 0) leapYear = true;
-        else if(year % 4 == 0 && year % 100 != 0) leapYear = true;
-
-        if(!leapYear && month == 2){
-            return day >= 0 && day <= 28;
-        }
-        if(leapYear && month == 2){
-            return day >= 0 && day <= 29;
-        }
 
         return true;
     }

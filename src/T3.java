@@ -12,23 +12,23 @@ public class T3 {
 
     public int solution(int[] numbers){
 
-        DFS(numbers, 0, 0);
-        return answer%100000;
+        int dfs = DFS(numbers, 0, 0);
+        return dfs % 100000;
+//        return answer%100000;
     }
 
-    private void DFS(int[] numbers, int index, int sum){
-
+    private int DFS(int[] numbers, int index, int sum){
+        int count = 0;
         if(index >= numbers.length){
             if(sum == 0){
-                answer++;
+                return 1;
+            }else{
+                return 0;
             }
         }else{
-            int num = numbers[index];
-
-            DFS(numbers, index+1, sum+num);
-            DFS(numbers, index+1, sum-num);
+            count += DFS(numbers, index+1, sum+numbers[index]);
+            count += DFS(numbers, index+1, sum-numbers[index]);
         }
-
-
+        return count;
     }
 }
