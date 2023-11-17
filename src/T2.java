@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class T2 {
 
     public static void main(String[] args) {
 
-        int solution = new T2().solution2(1000000, 3, 1000000);
+        int solution = new T2().solution2(100, 3, 150);
 
         System.out.println("solution = " + solution);
     }
@@ -27,7 +30,9 @@ public class T2 {
         int low = 0;
         int high = 100;
 
-        while(low < high){
+        int answer = 0;
+
+        while(low <= high){
             int mid = (low + high) /2;
             int amount = p;
             for(int i = 0; i < m; i++){
@@ -36,10 +41,11 @@ public class T2 {
             if(amount < d){
                 low = mid + 1;
             }else{
-                high = mid;
+                high = mid - 1;
+                answer = mid;
             }
         }
 
-        return low;
+        return answer;
     }
 }
